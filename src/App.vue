@@ -36,17 +36,19 @@ export default {
   }
 
 
+  //TO ADD MISSING IMAGE REPLACEMENT AND FONT AWESOME FOR STAR RATING
+
 }
 
 </script>
 
 <template>
-  <div class="container mt-5">
+  <div class="container pt-5">
 
     <div class="input-group mb-3">
       <input type="text" class="form-control" placeholder="Inserisci il titolo di un film"
         aria-describedby="button-addon2" v-model="store.query">
-      <button class="btn btn-primary" type="button" id="button-addon2"
+      <button class="btn btn-secondary" type="button" id="button-addon2"
         @click="store.fetchDataMovie(); store.fetchDataSeries()">Cerca</button>
     </div>
 
