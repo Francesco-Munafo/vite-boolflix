@@ -25,8 +25,16 @@ export default {
     posterGen(baseUrl, backdropPath) {
       const width = 'w342';
       return baseUrl + width + backdropPath
+    },
+    voteGen(vote){
+      const fixedVote = Math.ceil(vote / 2);
+
+
+      return fixedVote
+
     }
   }
+
 
 }
 
@@ -54,7 +62,7 @@ export default {
               <li class="fw-bold">Titolo originale: <span class="fw-light">{{ movie.original_title }}</span></li>
               <li class="fw-bold">Lingua originale: <img
                   :src="flagGen(store.flagBaseUrl, langConverter[movie.original_language].toUpperCase())" alt=""></li>
-              <li class="fw-bold">Voto: <span class="fw-light">{{ movie.vote_average }}</span></li>
+              <li class="fw-bold">Voto: <span class="fw-light" v-for="n in this.voteGen(movie.vote_average)">*</span></li>
             </ul>
             <p class="card-text"></p>
           </div>
@@ -75,7 +83,7 @@ export default {
               <li class="fw-bold">Titolo originale: <span class="fw-light">{{ series.original_name }}</span></li>
               <li class="fw-bold">Lingua originale: <img
                   :src="flagGen(store.flagBaseUrl, langConverter[series.original_language].toUpperCase())" alt=""></li>
-              <li class="fw-bold">Voto: <span class="fw-light">{{ series.vote_average }}</span></li>
+              <li class="fw-bold">Voto: <span class="fw-light" v-for="n in this.voteGen(series.vote_average)">*</span></li>
             </ul>
             <p class="card-text"></p>
           </div>
