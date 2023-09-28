@@ -18,10 +18,16 @@ export default {
     }
   },
   methods: {
-    flagGen(url, foo){
+    flagGen(url, foo) {
       return url + foo + '/flat/24.png'
+    },
+
+    posterGen(baseUrl, backdropPath) {
+      const width = 'w342';
+      return baseUrl + width + backdropPath
     }
   }
+
 }
 
 </script>
@@ -32,30 +38,64 @@ export default {
     <div class="input-group mb-3">
       <input type="text" class="form-control" placeholder="Inserisci il titolo di un film"
         aria-describedby="button-addon2" v-model="store.query">
-      <button class="btn btn-primary" type="button" id="button-addon2" @click="store.fetchDataMovie(); store.fetchDataSeries()">Cerca</button>
+      <button class="btn btn-primary" type="button" id="button-addon2"
+        @click="store.fetchDataMovie(); store.fetchDataSeries()">Cerca</button>
     </div>
-    <div>
-      <h1>MOVIES</h1>
-      <hr>
-      <ul class="movie_info list-unstyled" v-for="movie in store.movieResults">
-        <li class="fw-bold">Titolo: <span class="fw-light">{{ movie.title }}</span></li>
-        <li class="fw-bold">Titolo originale: <span class="fw-light">{{ movie.original_title }}</span></li>
-        <li class="fw-bold">Lingua originale: <img :src="flagGen(store.flagBaseUrl, langConverter[movie.original_language].toUpperCase())" alt=""></li>
-        <li class="fw-bold">Voto: <span class="fw-light">{{ movie.vote_average }}</span></li>
-        <hr>
-      </ul>
+
+    <h1>MOVIES</h1>
+    <div class="row row-cols-5 g-3 justify-content-around">
+
+      <div class="col" v-for="movie in store.movieResults">
+        <div class="card h-100">
+          <img class="img-fluid h-100" :src="posterGen(store.posterBaseUrl, movie.poster_path)" alt="">
+          <div class="card-body">
+            <ul class="list-group list-group-flush list-unstyled text-light">
+              <li class="fw-bold">Titolo: <span class="fw-light">{{ movie.title }}</span></li>
+              <li class="fw-bold">Titolo originale: <span class="fw-light">{{ movie.original_title }}</span></li>
+              <li class="fw-bold">Lingua originale: <img
+                  :src="flagGen(store.flagBaseUrl, langConverter[movie.original_language].toUpperCase())" alt=""></li>
+              <li class="fw-bold">Voto: <span class="fw-light">{{ movie.vote_average }}</span></li>
+            </ul>
+            <p class="card-text"></p>
+          </div>
+        </div>
+      </div>
+
     </div>
-    <div>
+
+    <h1>SERIES</h1>
+    <div class="row row-cols-5 g-3 justify-content-around">
+
+      <div class="col" v-for="series in store.tvResults">
+        <div class="card h-100">
+          <img class="img-fluid h-100" :src="posterGen(store.posterBaseUrl, series.poster_path)" alt="">
+          <div class="card-body">
+            <ul class="list-group list-group-flush list-unstyled text-light">
+              <li class="fw-bold">Titolo: <span class="fw-light">{{ series.name }}</span></li>
+              <li class="fw-bold">Titolo originale: <span class="fw-light">{{ series.original_name }}</span></li>
+              <li class="fw-bold">Lingua originale: <img
+                  :src="flagGen(store.flagBaseUrl, langConverter[series.original_language].toUpperCase())" alt=""></li>
+              <li class="fw-bold">Voto: <span class="fw-light">{{ series.vote_average }}</span></li>
+            </ul>
+            <p class="card-text"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- <div>
       <h1>SERIES</h1>
       <hr>
       <ul class="series_info list-unstyled" v-for="series in store.tvResults">
-      <li class="fw-bold">Titolo: <span class="fw-light">{{ series.name }}</span></li>
-      <li class="fw-bold">Titolo originale: <span class="fw-light">{{ series.original_name }}</span></li>
-      <li class="fw-bold">Lingua originale: <img :src="flagGen(store.flagBaseUrl, langConverter[series.original_language].toUpperCase())" alt=""></li>
-      <li class="fw-bold">Voto: <span class="fw-light">{{ series.vote_average }}</span></li>
-      <hr>
+        <li class="fw-bold">Titolo: <span class="fw-light">{{ series.name }}</span></li>
+        <li class="fw-bold">Titolo originale: <span class="fw-light">{{ series.original_name }}</span></li>
+        <li class="fw-bold">Lingua originale: <img
+            :src="flagGen(store.flagBaseUrl, langConverter[series.original_language].toUpperCase())" alt=""></li>
+        <li class="fw-bold">Voto: <span class="fw-light">{{ series.vote_average }}</span></li>
+        <hr>
       </ul>
-    </div>
+    </div> -->
 
 
   </div>

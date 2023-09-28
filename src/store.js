@@ -10,6 +10,7 @@ export const store = reactive({
     query: null,
     lang: '',
     flagBaseUrl: 'https://flagsapi.com/',
+    posterBaseUrl: 'https://image.tmdb.org/t/p/',
     valutation: '',
 
 
