@@ -52,7 +52,7 @@ export default {
         @click="store.fetchDataMovie(); store.fetchDataSeries()">Cerca</button>
     </div>
 
-    <h1>MOVIES</h1>
+    <h1 class="text-light">MOVIES</h1>
     <div class="row row-cols-5 g-3 justify-content-around">
 
       <div class="col" v-for="movie in store.movieResults">
@@ -73,7 +73,7 @@ export default {
 
     </div>
 
-    <h1>SERIES</h1>
+    <h1 class="text-light">SERIES</h1>
     <div class="row row-cols-5 g-3 justify-content-around">
 
       <div class="col" v-for="series in store.tvResults">
