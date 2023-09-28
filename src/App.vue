@@ -1,10 +1,11 @@
 <script>
 import { store } from './store.js'
 
+
 export default {
 
   name: 'App',
-  //emits:['add-query'],
+
 
   data() {
 
@@ -12,13 +13,11 @@ export default {
 
       store
 
-
     }
   },
   methods: {
-    addQuery() {
-      console.log(store.request.params.query);
-      console.log(store.request);
+    flagGen(url, foo){
+      return url + foo + '/flat/24.png'
     }
   }
 }
@@ -35,13 +34,15 @@ export default {
     </div>
     <div>
       <h1>FILM</h1>
-      <ul class="info list-unstyled" v-for="film in store.results">
-        <li class="fw-bold">Titolo: <span class="fw-light">{{ film.title }}</span></li>
-        <li class="fw-bold">Titolo originale: <span class="fw-light">{{ film.original_title }}</span></li>
-        <li class="fw-bold">Lingua originale: <span class="fw-light">{{ film.original_language }}</span></li>
-        <li class="fw-bold">Voto: <span class="fw-light">{{ film.vote_average }}</span></li>
+      <ul class="info list-unstyled" v-for="movie in store.results">
+        <li class="fw-bold">Titolo: <span class="fw-light">{{ movie.title }}</span></li>
+        <li class="fw-bold">Titolo originale: <span class="fw-light">{{ movie.original_title }}</span></li>
+        <li class="fw-bold">Lingua originale: <img :src="flagGen(store.flagBaseUrl, movie.original_language.toUpperCase())" alt=""></li>
+        <li class="fw-bold">Voto: <span class="fw-light">{{ movie.vote_average }}</span></li>
+        <hr>
       </ul>
     </div>
+
 
   </div>
 </template>

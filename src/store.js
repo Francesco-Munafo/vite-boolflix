@@ -7,6 +7,7 @@ export const store = reactive({
     movieTitle: '',
     originalTitle:'',
     lang:'',
+    flagBaseUrl: 'https://flagsapi.com/',
     valutation:'',
 
 
@@ -30,11 +31,6 @@ fetchDataMovie(){
         console.log(response.data);
         console.log(response.data.results[0].original_language);
         this.results = response.data.results;
-        /*this.movieTitle = response.data.results.title;
-        this.originalTitle = response.data.results.original_title;
-        this.lang = response.data.result.original_language;
-        this.valutation = response.data.result.vote_average;*/
-
         console.log(response);
         
 
@@ -42,6 +38,8 @@ fetchDataMovie(){
     .catch(error => {
         console.error(error);
     })
-}
+},
+
+
     
 })
