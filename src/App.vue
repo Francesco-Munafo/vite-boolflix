@@ -18,8 +18,8 @@ export default {
     }
   },
   methods: {
-    flagGen(url, foo) {
-      return url + foo + '/flat/24.png'
+    flagGen(url, lang) {
+      return url + lang + '/flat/24.png'
     },
 
     posterGen(baseUrl, backdropPath) {
@@ -57,7 +57,8 @@ export default {
 
       <div class="col" v-for="movie in store.movieResults">
         <div class="card h-100">
-          <img class="img-fluid h-100" :src="posterGen(store.posterBaseUrl, movie.poster_path)" alt="">
+          <img class="img-fluid h-100" v-if="movie.poster_path != null" :src="posterGen(store.posterBaseUrl, movie.poster_path)" alt="">
+          <h5 v-else="movie.poster_path == null" class="text-light text-center h-100 pt-5 mt-5">No preview avaible</h5>
           <div class="card-body">
             <ul class="list-group list-group-flush list-unstyled text-light">
               <li class="fw-bold">Titolo: <span class="fw-light">{{ movie.title }}</span></li>
@@ -78,7 +79,8 @@ export default {
 
       <div class="col" v-for="series in store.tvResults">
         <div class="card h-100">
-          <img class="img-fluid h-100" :src="posterGen(store.posterBaseUrl, series.poster_path)" alt="">
+          <img class="img-fluid h-100" v-if="series.poster_path != null" :src="posterGen(store.posterBaseUrl, series.poster_path)" alt="">
+          <h5 v-else="series.poster_path == null" class="text-light text-center h-100 pt-5 mt-5">No preview avaible</h5>
           <div class="card-body">
             <ul class="list-group list-group-flush list-unstyled text-light">
               <li class="fw-bold">Titolo: <span class="fw-light">{{ series.name }}</span></li>
@@ -93,19 +95,6 @@ export default {
       </div>
     </div>
 
-
-    <!-- <div>
-      <h1>SERIES</h1>
-      <hr>
-      <ul class="series_info list-unstyled" v-for="series in store.tvResults">
-        <li class="fw-bold">Titolo: <span class="fw-light">{{ series.name }}</span></li>
-        <li class="fw-bold">Titolo originale: <span class="fw-light">{{ series.original_name }}</span></li>
-        <li class="fw-bold">Lingua originale: <img
-            :src="flagGen(store.flagBaseUrl, langConverter[series.original_language].toUpperCase())" alt=""></li>
-        <li class="fw-bold">Voto: <span class="fw-light">{{ series.vote_average }}</span></li>
-        <hr>
-      </ul>
-    </div> -->
 
 
   </div>
