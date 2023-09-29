@@ -19,7 +19,6 @@ export default {
     <h3 class="w-100 glitch text-center pb-5" v-if="store.movieResults.length > 0">MOVIES</h3>
     <div class="row row-cols-5 g-3 justify-content-around">
     <AppCard :content="movie" v-for="movie in store.movieResults"></AppCard>
-    <div></div>
     <h3 class="w-100 glitch text-center py-5" v-if="store.tvResults.length > 0">SERIES</h3>
     <AppCard :content="series" v-for="series in store.tvResults"></AppCard>
     </div>

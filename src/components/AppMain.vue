@@ -17,7 +17,7 @@ export default {
 </script>
 <template>
     <main>
-        <div class="container pt-5">
+        <div class="container py-5">
             <CardList></CardList>
         </div>
     </main>

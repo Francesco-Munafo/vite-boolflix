@@ -38,8 +38,8 @@ export default {
 </script>
 <template>
     <div class="col">
-        <div class="card h-100 d-flex flex-column justify-content-center">
-            <img class="img-fluid h-100" v-if="content.poster_path != null"
+        <div class="card rounded-1 h-100 d-flex flex-column justify-content-center">
+            <img class="img-fluid h-100 rounded-1" v-if="content.poster_path != null"
                 :src="posterGen(store.posterBaseUrl, content.poster_path)" alt="">
             <h5 v-else class="glitch text-center" data-text="104NOT_FOUND">404NOT_FOUND No
                 preview available</h5>
@@ -48,11 +48,11 @@ export default {
                 <ul class="list-group list-group-flush list-unstyled text-light">
 
                     <li class="fw-bold">Title:
-                        <span class="fw-light">{{ content.title }}</span>
+                        <span class="fw-light">{{ content.title || content.name }}</span>
                     </li>
 
-                    <li class="fw-bold">Original title:
-                        <span class="fw-light">{{ content.original_title }}</span>
+                    <li class="fw-bold" v-if="content.title != content.original_title ">Original title:
+                        <span class="fw-light">{{ content.original_title || content.original_name }}</span>
                     </li>
 
                     <li class="fw-bold">Original language:
