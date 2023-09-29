@@ -33,7 +33,7 @@ export const store = reactive({
                 //console.log('FILMS' + this.movieResults);
                 
                 }
-                this.query = null 
+                
 
             })
             .catch(error => {
