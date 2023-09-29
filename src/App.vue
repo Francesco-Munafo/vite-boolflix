@@ -65,7 +65,7 @@ export default {
               <li class="fw-bold">Titolo originale: <span class="fw-light">{{ movie.original_title }}</span></li>
               <li class="fw-bold">Lingua originale: <img
                   :src="flagGen(store.flagBaseUrl, langConverter[movie.original_language].toUpperCase())" alt=""></li>
-              <li class="fw-bold">Voto: <span class="fw-light" v-for="n in this.voteGen(movie.vote_average)">*</span></li>
+              <li class="fw-bold">Voto: <span class="fw-light" v-for="n in this.voteGen(movie.vote_average)"><font-awesome-icon icon="fa-solid fa-star" /></span></li>
             </ul>
             <p class="card-text"></p>
           </div>
