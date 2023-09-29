@@ -27,9 +27,13 @@ export const store = reactive({
                 }
             })
             .then(response => {
-                this.movieResults = response.data.results;
-                console.log('FILMS' + this.movieResults);
-                this.query = null
+
+                if (this.query != null && this.query.trim() != ''){
+                   this.movieResults = response.data.results;
+                //console.log('FILMS' + this.movieResults);
+                
+                }
+                this.query = null 
 
             })
             .catch(error => {
@@ -48,13 +52,16 @@ export const store = reactive({
                 }
             })
             .then(response => {
-                this.tvResults = response.data.results;
-                console.log('SERIES' + this.tvResults);
-                this.query = null
+
+                if (this.query != null && this.query.trim() != ''){
+                  this.tvResults = response.data.results;
+                //console.log('SERIES' + this.tvResults);
+                }
+                this.query = null 
             })
     },
 
-    
+
 
 
 

@@ -68,6 +68,10 @@ export default {
                             <font-awesome-icon :icon="['far', 'star']" />
                         </span>
                     </li>
+                    <li class="fw-bold">Description:
+                        <span class="fw-light">{{ content.overview }}</span>
+
+                    </li>
                 </ul>
 
             </div>

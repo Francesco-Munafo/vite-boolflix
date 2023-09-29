@@ -15,6 +15,7 @@ export default {
 
       store,
 
+
     }
   },
   components:{
