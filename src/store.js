@@ -52,7 +52,9 @@ export const store = reactive({
                 console.log('SERIES' + this.tvResults);
                 this.query = null
             })
-    }
+    },
+
+    
 
 
 
