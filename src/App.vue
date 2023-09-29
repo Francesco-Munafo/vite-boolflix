@@ -62,10 +62,10 @@ export default {
       <div class="row row-cols-5 g-3 justify-content-around">
 
         <div class="col" v-for="movie in store.movieResults">
-          <div class="card h-100">
+          <div class="card h-100 d-flex flex-column justify-content-center">
             <img class="img-fluid h-100" v-if="movie.poster_path != null"
               :src="posterGen(store.posterBaseUrl, movie.poster_path)" alt="">
-            <h5 v-else="movie.poster_path == null" class="text-light text-center h-100 pt-5 mt-5">No preview avaible</h5>
+            <h5 v-else="movie.poster_path == null" class="glitch text-center" data-text="104NOT_FOUND">404NOT_FOUND No preview available</h5>
             <div class="card-body">
               <ul class="list-group list-group-flush list-unstyled text-light">
                 <li class="fw-bold">Title:
@@ -97,10 +97,10 @@ export default {
       <div class="row row-cols-5 g-3 justify-content-around">
 
         <div class="col" v-for="series in store.tvResults">
-          <div class="card h-100">
+          <div class="card h-100 d-flex flex-column justify-content-center">
             <img class="img-fluid h-100" v-if="series.poster_path != null"
               :src="posterGen(store.posterBaseUrl, series.poster_path)" alt="">
-            <h5 v-else="series.poster_path == null" class="text-light text-center h-100 pt-5 mt-5">No preview avaible</h5>
+            <h5 v-else="series.poster_path == null" class="glitch text-center" data-text="104NOT_FOUND">404NOT_FOUND No preview available</h5>
             <div class="card-body">
               <ul class="list-group list-group-flush list-unstyled text-light">
                 <li class="fw-bold">Titolo:

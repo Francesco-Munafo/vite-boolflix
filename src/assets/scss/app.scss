@@ -6,11 +6,11 @@
 
 #app{
     min-height: 100vh;
-    background-color: rgb(39, 39, 39);
+    background-color: $bf-main;
 }
 
 .card{
-    background-color: rgb(39, 39, 39);
+    background-color: $bf-main;
     position: relative;
 }
 
@@ -22,7 +22,7 @@
 }
 
 .card:hover .card-body{
-    background-color: rgba(80, 80, 80, 0.9);
+    background-color: $bf-bg-hover;
     display: block;
         top: 0;
         left: 0;
@@ -33,7 +33,7 @@
 
 @import url(https://fonts.googleapis.com/css?family=Press+Start+2P);
 
-$bg-color: rgb(39, 39, 39);
+$bg-color: $bf-main;
 $glitch-bg-color: $bg-color;
 
 
@@ -58,7 +58,7 @@ h1 {
   background: $glitch-bg-color;
   font-family: 'Press Start 2P', cursive;
   font-weight: bold;
-  color: #d61b1b;
+  color: $bf-secondary;
   background-color: $bg-color;
 }
 
