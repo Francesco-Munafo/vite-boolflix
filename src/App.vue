@@ -87,7 +87,7 @@ export default {
               <li class="fw-bold">Titolo originale: <span class="fw-light">{{ series.original_name }}</span></li>
               <li class="fw-bold">Lingua originale: <img
                   :src="flagGen(store.flagBaseUrl, langConverter[series.original_language].toUpperCase())" alt=""></li>
-              <li class="fw-bold">Voto: <span class="fw-light" v-for="n in this.voteGen(series.vote_average)">*</span></li>
+              <li class="fw-bold">Voto: <span class="fw-light text-warning" v-for="n in this.voteGen(series.vote_average)"><font-awesome-icon :icon="['fas', 'star']" /></span><span class="fw-light" v-for="n in ( 5 - this.voteGen(series.vote_average))"><font-awesome-icon :icon="['far', 'star']" /></span></li>
             </ul>
             <p class="card-text"></p>
           </div>
