@@ -43,7 +43,7 @@ export default {
                 :src="posterGen(store.posterBaseUrl, content.poster_path)" alt="">
             <h5 v-else class="glitch text-center" data-text="104NOT_FOUND">404NOT_FOUND No
                 preview available</h5>
-            <div class="card-body">
+            <div class="card-body rounded-1">
 
                 <ul class="list-group list-group-flush list-unstyled text-light">
 

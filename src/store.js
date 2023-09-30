@@ -5,6 +5,8 @@ export const store = reactive({
 
     movieResults: [],
     tvResults: [],
+    moviesID:[],
+    tvID:[],
     movieTitle: '',
     originalTitle: '',
     query: null,
@@ -30,7 +32,9 @@ export const store = reactive({
 
                 if (this.query != null && this.query.trim() != ''){
                    this.movieResults = response.data.results;
+                   this.moviesID = response.data.results[0].id;
                 //console.log('FILMS' + this.movieResults);
+                console.log('MOVIES' + this.moviesID);
                 
                 }
                 
@@ -55,9 +59,11 @@ export const store = reactive({
 
                 if (this.query != null && this.query.trim() != ''){
                   this.tvResults = response.data.results;
+                  this.tvID = response.data.results[0].id;
+                  console.log('SERIES ID' + this.tvID);
                 //console.log('SERIES' + this.tvResults);
                 }
-                this.query = null 
+                
             })
     },
 

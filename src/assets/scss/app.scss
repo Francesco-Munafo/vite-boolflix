@@ -29,6 +29,7 @@ header{
 
 .card:hover .card-body{
     background-color: $bf-bg-hover;
+    border: 1px solid white;
     display: block;
         top: 0;
         left: 0;
@@ -153,7 +154,7 @@ h1 {
 
 /*#endregion PageTitle*/
 
-/* CARD SCROLLBAR */
+/*#region CARD SCROLLBAR */
 
 .card-body::-webkit-scrollbar-track
 {
@@ -174,9 +175,9 @@ h1 {
 	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
 	background-color: $bf-secondary;
 }
+/*#endregion CARD SCROLLBAR */
 
-
-/* SITE SCROLLBAR */
+/*#region SITE SCROLLBAR */
 
 ::-webkit-scrollbar-track
 {
@@ -197,3 +198,5 @@ h1 {
 	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
 	background-color: $bf-secondary;
 }
+
+/*#endregion SITE SCROLLBAR */
