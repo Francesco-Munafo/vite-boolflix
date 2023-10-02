@@ -41,7 +41,7 @@ export default {
         <div class="card rounded-1 h-100 d-flex flex-column justify-content-center">
             <img class="img-fluid h-100 rounded-1" v-if="content.poster_path != null"
                 :src="posterGen(store.posterBaseUrl, content.poster_path)" alt="">
-            <h5 v-else class="glitch text-center" data-text="104NOT_FOUND">404NOT_FOUND No
+            <h5 v-else class="glitch text-center" data-text="104">404NOT_FOUND No
                 preview available</h5>
             <div class="card-body rounded-1">
 
@@ -69,8 +69,8 @@ export default {
                         </span>
                     </li>
                     <li class="fw-bold">Description:
-                        <span class="fw-light">{{ content.overview }}</span>
-
+                        <span v-if="content.overview != ''" class="fw-light">{{ content.overview }}</span>
+                        <span v-else class="fw-light">No description available</span>
                     </li>
                 </ul>
 
