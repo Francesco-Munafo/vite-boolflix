@@ -7,7 +7,7 @@ export const store = reactive({
     tvResults: [],
     moviesID: [],
     tvID: [],
-    movieCast:[],
+    movieCast: [],
     movieTitle: '',
     originalTitle: '',
     query: null,
@@ -30,16 +30,19 @@ export const store = reactive({
                 }
             })
             .then(response => {
+                //Clear the array so it'll always be empty after a request
+                this.moviesID = [];
                 //This condition controls user's input and then gives the results
                 if (this.query != null && this.query.trim() != '') {
                     this.movieResults = response.data.results;
-                }
-                //This cycle gets all movies IDs from the search results
-                for (let i = 0; i < this.movieResults.length; i++) {
-                    this.moviesID.push(this.movieResults[i].id);
+                    
+                    //This cycle gets all movies IDs from the search results
+                    for (let i = 0; i < this.movieResults.length; i++) {
+                        this.moviesID.push(this.movieResults[i].id);
+                    }
                 }
                 console.log(this.moviesID);
-                
+
 
             })
             .catch(error => {
@@ -58,21 +61,27 @@ export const store = reactive({
                 }
             })
             .then(response => {
-
+                //Clear the array so it'll always be empty after a request
+                this.tvID = [];
+                //This condition controls user's input and then gives the results
                 if (this.query != null && this.query.trim() != '') {
                     this.tvResults = response.data.results;
-                    this.tvID = response.data.results[0].id;
-                    console.log('SERIES ID' + this.tvID);
+
+                    //This cycle gets all series IDs from the search results
+                    for (let i = 0; i < this.tvResults.length; i++) {
+                        this.tvID.push(this.tvResults[i].id);
+                    }
+                    console.log(this.tvID);
                     //console.log('SERIES' + this.tvResults);
                 }
 
             })
     },
-    /*fetchMovieCast(){
+    fetchMovieCast() {
         for (let i = 0; i < moviesID.length; i++) {
-            .get()
+            console.log(this.moviesID[i]);
         }
-    }*/
+    }
 
 
 
