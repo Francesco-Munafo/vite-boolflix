@@ -5,8 +5,6 @@ export const store = reactive({
 
     movieResults: [],
     tvResults: [],
-    moviesID: [],
-    tvID: [],
     movieCast: [],
     movieTitle: '',
     originalTitle: '',
@@ -31,17 +29,30 @@ export const store = reactive({
             })
             .then(response => {
                 //Clear the array so it'll always be empty after a request
-                this.moviesID = [];
+
                 //This condition controls user's input and then gives the results
                 if (this.query != null && this.query.trim() != '') {
                     this.movieResults = response.data.results;
-                    
+
+
                     //This cycle gets all movies IDs from the search results
-                    for (let i = 0; i < this.movieResults.length; i++) {
-                        this.moviesID.push(this.movieResults[i].id);
-                    }
+                    this.movieResults.forEach(movie => {
+                        axios
+                            .request({
+                                method: 'GET',
+                                url: `https://api.themoviedb.org/3/movie/${movie.id}/credits`,
+                                params:{
+                                    api_key: '4b353b432307462fb64faa6c35915b3f'
+                                }
+                            })
+                            .then(movieCredit => {
+                                movie.cast = movieCredit.data.cast;
+                            })
+                    });
+
+
                 }
-                console.log(this.moviesID);
+                console.log(this.movieResults);
 
 
             })
@@ -62,25 +73,32 @@ export const store = reactive({
             })
             .then(response => {
                 //Clear the array so it'll always be empty after a request
-                this.tvID = [];
+
                 //This condition controls user's input and then gives the results
                 if (this.query != null && this.query.trim() != '') {
                     this.tvResults = response.data.results;
 
                     //This cycle gets all series IDs from the search results
-                    for (let i = 0; i < this.tvResults.length; i++) {
-                        this.tvID.push(this.tvResults[i].id);
-                    }
-                    console.log(this.tvID);
-                    //console.log('SERIES' + this.tvResults);
+                    this.tvResults.forEach(series => {
+                        axios
+                            .request({
+                                method: 'GET',
+                                url: `https://api.themoviedb.org/3/tv/${series.id}/credits`,
+                                params:{
+                                    api_key: '4b353b432307462fb64faa6c35915b3f'
+                                }
+                            })
+                            .then(seriesCredit => {
+                                series.cast = seriesCredit.data.cast;
+                            })
+                    });
+                    
                 }
-
+                console.log(this.tvResults);
             })
     },
-    fetchMovieCast() {
-        for (let i = 0; i < moviesID.length; i++) {
-            console.log(this.moviesID[i]);
-        }
+    async fetchMovieCast() {
+
     }
 
 

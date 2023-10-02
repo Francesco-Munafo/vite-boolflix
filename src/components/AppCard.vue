@@ -72,6 +72,9 @@ export default {
                         <span v-if="content.overview != ''" class="fw-light">{{ content.overview }}</span>
                         <span v-else class="fw-light">No description available</span>
                     </li>
+                    <li class="fw-bold">Actors:
+                        <span  v-for="cast in content.cast" class="fw-light">{{ `${cast.name}, ` }}</span>
+                    </li>
                 </ul>
 
             </div>
