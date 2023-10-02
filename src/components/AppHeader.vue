@@ -20,7 +20,7 @@ export default {
     <div class="d-flex justify-content-between pt-3 p-5">
       <h1 class="glitch" data-text="‎ NET">BOOLFLIX</h1>
       <div class="d-flex">
-        <select class="form-select h-75 w-75 " id="select" @change="$emit('selected-genre')" v-model="store.selectedGenre">
+        <select class="form-select h-75 w-75 " id="select" @change="store.movieGenreFilter()" v-model="store.selectedGenre">
           <option value="" selected="selected">Choose a genre</option>
           <option v-for="genre in store.genres" :value="genre.id">{{ genre.name }}</option>
         </select>

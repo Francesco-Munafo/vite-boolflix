@@ -27,7 +27,6 @@ export default {
         voteGen(vote) {
             const fixedVote = Math.ceil(vote / 2);
 
-
             return fixedVote
         }
     }

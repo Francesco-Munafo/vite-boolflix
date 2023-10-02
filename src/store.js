@@ -119,7 +119,7 @@ export const store = reactive({
                     });
 
                 }
-                console.log(this.tvResults);
+                //console.log(this.tvResults);
             })
     },
 
@@ -133,12 +133,31 @@ export const store = reactive({
             }
         })
         .then(genresResp => {
-            console.log(genresResp.data.genres);
+            //console.log(genresResp.data.genres);
             this.genres = genresResp.data.genres
             
         })
     },
 
+    
+
+    movieGenreFilter() {
+        this.movieResults = this.movieResults.filter(movie => {
+            //console.log(movie);
+            console.log(movie.genre_ids.includes(this.selectedGenre));
+             return movie.genre_ids.includes(this.selectedGenre)
+        })
+        
+    },
+
+    seriesGenreFilter() {
+        this.movieResults = this.movieResults.filter(movie => {
+            //console.log(movie);
+            console.log(movie.genre_ids.includes(this.selectedGenre));
+             return movie.genre_ids.includes(this.selectedGenre)
+        })
+        
+    }
 
 
 })
