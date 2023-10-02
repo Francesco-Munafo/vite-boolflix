@@ -6,6 +6,8 @@ export const store = reactive({
     movieResults: [],
     tvResults: [],
     movieCast: [],
+    genres:[],
+    selectedGenre: '',
     movieTitle: '',
     originalTitle: '',
     query: null,
@@ -29,7 +31,7 @@ export const store = reactive({
                 }
             })
             .then(response => {
-                //Clear the array so it'll always be empty after a request
+
 
                 //This condition controls user's input and then gives the results
                 if (this.query != null && this.query.trim() != '') {
@@ -85,7 +87,6 @@ export const store = reactive({
                 }
             })
             .then(response => {
-                //Clear the array so it'll always be empty after a request
 
                 //This condition controls user's input and then gives the results
                 if (this.query != null && this.query.trim() != '') {
@@ -104,7 +105,7 @@ export const store = reactive({
                             .then(seriesCredit => {
                                 series.cast = seriesCredit.data.cast;
                             })
-                            axios
+                        axios
                             .request({
                                 method: 'GET',
                                 url: `https://api.themoviedb.org/3/tv/${series.id}`,
@@ -122,6 +123,21 @@ export const store = reactive({
             })
     },
 
+    fetchGenres(){
+        axios
+        .request({
+            method: 'GET',
+            url: 'https://api.themoviedb.org/3/genre/movie/list',
+            params: {
+                api_key: this.api_key
+            }
+        })
+        .then(genresResp => {
+            console.log(genresResp.data.genres);
+            this.genres = genresResp.data.genres
+            
+        })
+    },
 
 
 
