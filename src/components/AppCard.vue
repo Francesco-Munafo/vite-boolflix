@@ -75,6 +75,9 @@ export default {
                     <li class="fw-bold">Actors:
                         <span  v-for="cast in content.cast" class="fw-light">{{ `${cast.name}, ` }}</span>
                     </li>
+                    <li class="fw-bold">Genres:
+                        <span v-for="genres in content.genres" class="fw-light">{{ `${genres.name}, ` }}</span>
+                    </li>
                 </ul>
 
             </div>

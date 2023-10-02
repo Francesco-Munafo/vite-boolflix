@@ -13,6 +13,7 @@ export const store = reactive({
     flagBaseUrl: 'https://flagsapi.com/',
     posterBaseUrl: 'https://image.tmdb.org/t/p/',
     valutation: '',
+    api_key: '4b353b432307462fb64faa6c35915b3f', //This is a personal API key, if you want to use this code be sure to replace it with your key
 
 
 
@@ -23,7 +24,7 @@ export const store = reactive({
                 method: 'GET',
                 url: 'https://api.themoviedb.org/3/search/movie',
                 params: {
-                    api_key: '4b353b432307462fb64faa6c35915b3f', //This is a personal API key, if you want to use this code be sure to replace it with your key
+                    api_key: this.api_key,
                     query: this.query
                 }
             })
@@ -41,14 +42,26 @@ export const store = reactive({
                             .request({
                                 method: 'GET',
                                 url: `https://api.themoviedb.org/3/movie/${movie.id}/credits`,
-                                params:{
-                                    api_key: '4b353b432307462fb64faa6c35915b3f'
+                                params: {
+                                    api_key: this.api_key
                                 }
                             })
                             .then(movieCredit => {
                                 movie.cast = movieCredit.data.cast;
                             })
+                        axios
+                            .request({
+                                method: 'GET',
+                                url: `https://api.themoviedb.org/3/movie/${movie.id}`,
+                                params: {
+                                    api_key: this.api_key
+                                }
+                            })
+                            .then(movieGenres => {
+                                movie.genres = movieGenres.data.genres;
+                            })
                     });
+
 
 
                 }
@@ -67,7 +80,7 @@ export const store = reactive({
                 method: 'GET',
                 url: 'https://api.themoviedb.org/3/search/tv',
                 params: {
-                    api_key: '4b353b432307462fb64faa6c35915b3f',
+                    api_key: this.api_key,
                     query: this.query
                 }
             })
@@ -84,23 +97,30 @@ export const store = reactive({
                             .request({
                                 method: 'GET',
                                 url: `https://api.themoviedb.org/3/tv/${series.id}/credits`,
-                                params:{
-                                    api_key: '4b353b432307462fb64faa6c35915b3f'
+                                params: {
+                                    api_key: this.api_key,
                                 }
                             })
                             .then(seriesCredit => {
                                 series.cast = seriesCredit.data.cast;
                             })
+                            axios
+                            .request({
+                                method: 'GET',
+                                url: `https://api.themoviedb.org/3/tv/${series.id}`,
+                                params: {
+                                    api_key: this.api_key
+                                }
+                            })
+                            .then(seriesGenres => {
+                                series.genres = seriesGenres.data.genres;
+                            })
                     });
-                    
+
                 }
                 console.log(this.tvResults);
             })
     },
-    async fetchMovieCast() {
-
-    }
-
 
 
 
